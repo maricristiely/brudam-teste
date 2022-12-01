@@ -53,7 +53,7 @@
         </form>
     </div>
     <?php
-        //Verifica se o botao importar foi clicado
+
         if (isset($_POST["importar"]) == false)
         {
             exit;
@@ -81,7 +81,6 @@
 
         $json = curl_exec($ch);
 
-        //testando se o URL e valido (url padrao + o token)
         $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         if ($httpCode != 200) 
         {
@@ -91,7 +90,6 @@
 
         $resultado = json_decode($json, false);
         
-        //navegando na estrutura do json
         //a estrutura do json deve ser lida antes do foreach
         $coletas = $resultado->data->gulliverExpress->coletas;
         $minutas = $resultado->data->gulliverExpress->minutas; 
@@ -107,7 +105,6 @@
             $volume_coleta = $registro->volume;
             $peso_coleta = $registro->peso;
             $frete_coleta = $registro->frete;
-
 
             $sql_consulta = "SELECT * FROM coletas WHERE id_coleta = '$id_coleta'";
 
