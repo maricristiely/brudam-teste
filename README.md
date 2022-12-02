@@ -4,6 +4,7 @@ Importando API e consultando os dados inseridos no Banco de Dados.
 
 - Instruções do Banco de Dados:
 
+```
 CREATE TABLE sistema
 (
     token VARCHAR(100)
@@ -18,8 +19,8 @@ CREATE TABLE coletas
     origem_coleta VARCHAR(100),
     destino_coleta VARCHAR(100),
     volume_coleta INT,
-    peso_coleta DECIMAL(10.2),
-    frete_coleta DECIMAL(10.2)
+    peso_coleta DECIMAL(10,2),
+    frete_coleta DECIMAL(10,2)
 );
 
 CREATE TABLE minutas
@@ -32,11 +33,11 @@ CREATE TABLE minutas
     origem_minuta VARCHAR(100),
     destino_minuta VARCHAR(100),
     volume_minuta INT,
-    peso_minuta DECIMAL(10.2),
-    frete_minuta DECIMAL(10.2),
+    peso_minuta DECIMAL(10,2),
+    frete_minuta DECIMAL(10,2),
     id_coleta INT
 );
-
+```
 - Testando o Sistema:
 
 1º Passo: Tela Cadastrar Token  - Nesta tela, vamos inserir o token válido ce019046e010bf7f1aab029cc688c9fd e cadastrar e armazenar no banco.
