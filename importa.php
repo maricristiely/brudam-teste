@@ -74,22 +74,28 @@
 
         $url = "https://app-brudam.herokuapp.com/kabum/api/show/remessas/$token";
 
-
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
+        //Chamando API
         $json = curl_exec($ch);
 
-        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        if ($httpCode != 200) 
+        //Lendo estrutura do json
+        $resultado = json_decode($json, false);
+        
+        //testando se o token e valido
+        $mensagem = $resultado->message;
+        $status = $resultado->status;
+
+        //Status 0 siginifica que o token do servidor
+        if ($status == 0)
         {
-            echo "O token $token é invalido, dados não foram importado";
+            //Exibindo a mendagem que vem do servidor
+            echo $mensagem;
             exit;
         }
 
-        $resultado = json_decode($json, false);
-        
         //a estrutura do json deve ser lida antes do foreach
         $coletas = $resultado->data->gulliverExpress->coletas;
         $minutas = $resultado->data->gulliverExpress->minutas; 

@@ -74,11 +74,12 @@
             exit;
         }
 
-
+        //Atribuindo os comandos do sql de exclusao e insersao
         $sql_delete = "DELETE FROM sistema";
         
         $sql_insert = "INSERT INTO sistema (token) VALUES ( '$token')";
         
+        //Conectando e executando os comandos de exclusao e insersao
         $connect = mysqli_connect("localhost", "root", "", "relatorios");
         $connect->query($sql_delete);
         $connect->query($sql_insert);
